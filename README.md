@@ -163,3 +163,42 @@ Vector quantization or ANN indexing for faster retrieval at scale.
 | Financial/legal QA        | 0.5      | 0.5        | 0.0–0.1        |
 
 
+
+
+
+def split_text_with_metadata(text: str, source: str, page: int = None):
+    chunks = splitter.split_text(text)
+    return [
+        {
+            "content": chunk,
+            "tokens": tiktoken_len(chunk),
+            "metadata": {
+                "source": source,
+                "page": page
+            }
+        }
+        for chunk in chunks
+    ]
+
+
+
+
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from transformers import GPT2TokenizerFast
+
+# Tokenizer compatible with Google text-embedding-005
+tokenizer = GPT2TokenizerFast.from_pretrained("gpt2")
+
+def tiktoken_len(text: str) -> int:
+    return len(tokenizer.encode(text))
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=350,             # target ~350 tokens
+    chunk_overlap=50,           # allow 50 token overlap
+    length_function=tiktoken_len,
+    separators=["\n\n", "\n", ".", " ", ""],  # hierarchy of splitting
+)
+
+def split_text(text: str):
+    return splitter.split_text(text)
+
