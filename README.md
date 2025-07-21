@@ -1,4 +1,6 @@
 from es_client import es
+now_ts = int(datetime.utcnow().timestamp() * 1000)
+from datetime import datetime
 
 INDEX_NAME = "rag_documents"
 
