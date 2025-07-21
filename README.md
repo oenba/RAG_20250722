@@ -56,3 +56,13 @@ FAQ型问答（命中关键词为主）	0.7	0.3	0.0
 语义问答（开放性）	0.4	0.6	0.0
 新闻类（关注时间）	0.5	0.4	0.1
 复杂问答（需 LTR）	LTR 替代上式，或加入特征分
+
+
+
+
+
+Enterprise-Grade Hybrid Scoring Strategy for RAG
+
+This strategy is designed to combine keyword relevance (BM25), semantic similarity (cosine similarity), and optional business-specific features into a unified ranking score for use in Retrieval-Augmented Generation (RAG) systems.
+
+
