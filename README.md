@@ -152,3 +152,14 @@ Dynamic weight control: Tune α/β/γ based on query type or user profile.
 
 Vector quantization or ANN indexing for faster retrieval at scale.
 
+
+
+
+| Use Case                  | α (BM25) | β (Cosine) | γ (Time/Extra) |
+| ------------------------- | -------- | ---------- | -------------- |
+| FAQ-style retrieval       | 0.7      | 0.3        | 0.0            |
+| Open-ended semantic query | 0.4      | 0.6        | 0.0            |
+| News/article ranking      | 0.5      | 0.4        | 0.1            |
+| Financial/legal QA        | 0.5      | 0.5        | 0.0–0.1        |
+
+
